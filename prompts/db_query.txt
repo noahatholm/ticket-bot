@@ -1,0 +1,5 @@
+Rewrite the text below into a concise search query (under 12 words). 
+- Remove greetings, filler words, and irrelevant phrases. 
+- Focus on the core question or concept.
+- In your output provide the rewritten query in <Answer></Answer> Tags
+<Question>{}</Question>

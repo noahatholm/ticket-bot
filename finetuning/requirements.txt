@@ -1,4 +1,0 @@
-"torch" torchvision torchaudio --index-rul https://download.pytorch.org/whl/cu128
-peft
-python-dotenv
-transformers

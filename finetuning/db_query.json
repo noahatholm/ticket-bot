@@ -1,0 +1,242 @@
+[
+{
+"question": "I am having trouble logging into my account. It keeps saying 'invalid password' even though I've reset it three times. What can I do?",
+"answer": "user unable to log in, 'invalid password' error after multiple resets, needs troubleshooting steps."
+},
+{
+"question": "My credit card was charged twice for the same monthly subscription. Could you please check this and refund the extra charge?",
+"answer": "customer charged twice for same monthly subscription, requesting investigation and a refund for duplicate charge."
+},
+{
+"question": "How do I change my profile picture? I've looked through the settings but can't find the option.",
+"answer": "how to change profile picture, user cannot find option in settings, needs instructions."
+},
+{
+"question": "The application crashes every time I try to upload a file. Is there a known bug or a workaround for this?",
+"answer": "application crashes during file upload, user seeking information on bugs or a solution."
+},
+{
+"question": "I've been trying to find a record from last year, but the search function doesn't seem to work for dates that far back. Is there a filter I'm missing?",
+"answer": "search function not working for historical records, user needs help with date filtering."
+},
+{
+"question": "I accidentally deleted a project I've been working on for months. Is there any way to recover it?",
+"answer": "user accidentally deleted project, seeking information on file or data recovery process."
+},
+{
+"question": "I can't seem to open any of the links in my email notifications. They just lead to a blank page. Is there a fix for this?",
+"answer": "email notification links not working, leading to blank page, needs troubleshooting steps."
+},
+{
+"question": "My account was suspended, and I don't know why. Can you tell me the reason for the suspension and how to appeal it?",
+"answer": "account suspended without reason, user needs to know why and how to appeal."
+},
+{
+"question": "I'm trying to import data from a spreadsheet, but it's giving me a 'format error'. What is the correct format I should be using?",
+"answer": "data import from spreadsheet failing with 'format error', user needs correct format specifications."
+},
+{
+"question": "The video conferencing feature is not loading on my browser. I'm using Chrome. Do I need to enable a specific setting?",
+"answer": "video conferencing feature not loading on Chrome, needs browser-specific settings or a fix."
+},
+{
+"question": "I want to upgrade my plan to the Pro version. How can I do that and what will be the new billing cycle?",
+"answer": "user wants to upgrade to Pro plan, needs instructions and information on new billing cycle."
+},
+{
+"question": "I didn't receive the confirmation email after signing up. Can you resend it or confirm my account is active?",
+"answer": "confirmation email not received after sign-up, user requests resend or account status confirmation."
+},
+{
+"question": "Is it possible to integrate this service with Zapier? I couldn't find any documentation on it.",
+"answer": "user wants to know if there is a Zapier integration and needs documentation."
+},
+{
+"question": "My subscription is set to renew automatically. How can I disable the auto-renewal feature to prevent future charges?",
+"answer": "how to disable auto-renewal for a subscription to stop future billing."
+},
+{
+"question": "I'm experiencing significant lag when I use the real-time collaboration feature. My internet connection is stable. What could be the cause?",
+"answer": "significant lag during real-time collaboration, user needs to know potential causes and solutions."
+},
+{
+"question": "Can I get a PDF invoice for my last three payments? I need them for my company's accounting.",
+"answer": "user needs PDF invoices for last three payments for accounting purposes."
+},
+{
+"question": "The mobile app keeps freezing on my iPhone. It's the latest version. What can I do to fix this?",
+"answer": "mobile app freezing on iPhone, user needs troubleshooting steps to fix the issue."
+},
+{
+"question": "Is there a way to export my data in a CSV format? I can only see a JSON export option.",
+"answer": "how to export data to CSV format, user only sees JSON option."
+},
+{
+"question": "I forgot my username. I only remember the email address associated with the account. Can you help me retrieve it?",
+"answer": "user forgot username, only remembers email, needs help with retrieval process."
+},
+{
+"question": "I'm getting an 'access denied' message when I try to view a document that was shared with me. What's wrong?",
+"answer": "user getting 'access denied' to shared document, needs information on permissions."
+},
+{
+"question": "The search results are not relevant to my query. It seems to be matching keywords in a strange way. Can I refine the search?",
+"answer": "search results are not relevant, user wants to know how to refine search query."
+},
+{
+"question": "I would like to change the email address linked to my account. How can I update this information?",
+"answer": "how to change the email address linked to a user's account."
+},
+{
+"question": "Is there an option for two-factor authentication? I want to increase the security of my account.",
+"answer": "user inquiring about two-factor authentication to improve account security."
+},
+{
+"question": "My subscription was canceled without my consent. Can you please reinstate it and explain what happened?",
+"answer": "subscription was canceled without consent, user wants reinstatement and an explanation."
+},
+{
+"question": "I can't seem to upload images in JPG format. Are only PNGs and GIFs supported?",
+"answer": "user unable to upload JPG images, wants to know supported image file types."
+},
+{
+"question": "I want to delete my account and all associated data. What is the process for permanent deletion?",
+"answer": "user wants to permanently delete their account and associated data, needs instructions."
+},
+{
+"question": "The live chat feature is not appearing on my dashboard. Is it only available for a certain plan?",
+"answer": "live chat feature missing from dashboard, user wants to know if it's plan-specific."
+},
+{
+"question": "I'm getting a 'server connection failed' error. Is the service down, or is it a problem on my end?",
+"answer": "user receiving 'server connection failed' error, needs to know service status."
+},
+{
+"question": "How do I share a document with a non-user? Is there an option for a public shareable link?",
+"answer": "how to share a document with a non-user, inquiring about public shareable links."
+},
+{
+"question": "I need to add a new team member to my project. How do I send them an invitation?",
+"answer": "how to add a new team member to a project and send an invitation."
+},
+{
+"question": "The user interface on my tablet looks weird. The buttons are all out of place. Is it optimized for tablets?",
+"answer": "user interface distorted on tablet, inquiring if the app is optimized for tablet display."
+},
+{
+"question": "My microphone isn't being detected during a call. I've checked my browser permissions. What else could be the problem?",
+"answer": "microphone not detected during call, user needs troubleshooting steps beyond browser permissions."
+},
+{
+"question": "I am unable to play an audio file that I uploaded. It says 'unsupported format'. What audio formats are supported?",
+"answer": "user cannot play uploaded audio, 'unsupported format' error, needs list of supported formats."
+},
+{
+"question": "I'm trying to make a payment, but my card is being declined. I know I have enough funds. What could be wrong?",
+"answer": "credit card payment declined, user needs to know reasons for card decline."
+},
+{
+"question": "How do I reset my password? The 'forgot password' link doesn't seem to be sending an email.",
+"answer": "user needs to reset password, 'forgot password' email is not being received."
+},
+{
+"question": "The charts in my dashboard are not updating with the new data. How often are they supposed to refresh?",
+"answer": "dashboard charts not updating, user needs information on data refresh frequency."
+},
+{
+"question": "I want to change my subscription from monthly to yearly. How can I switch my billing cycle?",
+"answer": "how to switch billing cycle from monthly to yearly for a subscription."
+},
+{
+"question": "Is it possible to get a bulk discount if I buy 20 licenses for my team?",
+"answer": "user is asking about a potential bulk discount for purchasing 20 licenses."
+},
+{
+"question": "I'm trying to send a message to a group, but the 'send' button is grayed out. What's preventing me from sending it?",
+"answer": "user cannot send message to a group, send button is grayed out, needs reason."
+},
+{
+"question": "My account shows an error 'quota exceeded'. What does this mean and how can I fix it?",
+"answer": "user's account shows 'quota exceeded' error, needs explanation and solution."
+},
+{
+"question": "I need to change my country and currency. I can't find the option in the settings.",
+"answer": "how to change country and currency settings in the user's account."
+},
+{
+"question": "I'm not receiving any email notifications for updates. I've checked my spam folder. What could be the problem?",
+"answer": "email notifications for updates are not being received, user needs to troubleshoot."
+},
+{
+"question": "Can I connect my Google Drive to this platform to import files directly?",
+"answer": "user wants to know if there is a Google Drive integration for file imports."
+},
+{
+"question": "The text editor is lagging when I type fast. It's making it hard to work. Can you help?",
+"answer": "text editor is lagging when typing fast, user needs a fix."
+},
+{
+"question": "I want to delete a file, but I don't see a trash or delete icon. How do I get rid of it?",
+"answer": "how to delete a file, user cannot find the delete icon."
+},
+{
+"question": "I'm trying to export my entire project as a ZIP file, but the export fails halfway through. What's wrong?",
+"answer": "project export to ZIP file fails halfway, user needs to know the reason."
+},
+{
+"question": "The mobile app is consuming too much battery. Is there a way to reduce its power usage?",
+"answer": "mobile app consuming too much battery, user needs a way to reduce power usage."
+},
+{
+"question": "The collaboration feature is not working. The other person can't see my changes in real time. Is something wrong with the synchronization?",
+"answer": "real-time collaboration not syncing changes, user needs to troubleshoot synchronization issue."
+},
+{
+"question": "I just received an email that says my account has been logged in from a new device. I didn't do this. What should I do?",
+"answer": "account logged in from a new device without consent, user needs to know next steps."
+},
+{
+"question": "Can I transfer ownership of my project to another user? I need to hand it over to a colleague.",
+"answer": "how to transfer project ownership to another user or colleague."
+},
+{
+"question": "I'm having trouble with the billing page. It's not loading correctly and looks jumbled.",
+"answer": "billing page is not loading correctly and looks disorganized, needs a fix."
+},
+{
+"question": "Is it possible to pause my subscription for a few months instead of canceling it?",
+"answer": "how to pause subscription instead of outright cancellation."
+},
+{
+"question": "I can't hear the other person in the video call. My speakers are working fine. Is there an in-app volume control?",
+"answer": "user cannot hear other person in video call, needs in-app audio troubleshooting."
+},
+{
+"question": "I'm getting an error when I try to upload a file that's larger than 100MB. Is there a file size limit?",
+"answer": "file upload fails for files over 100MB, user needs to know file size limit."
+},
+{
+"question": "I want to customize my dashboard with different widgets. How can I add or remove them?",
+"answer": "how to customize dashboard, user needs to know how to add and remove widgets."
+},
+{
+"question": "My account keeps getting logged out automatically after a few minutes of inactivity. Can I change this setting?",
+"answer": "account automatically logs out after inactivity, user needs to know if timeout can be changed."
+},
+{
+"question": "The push notifications on my phone are not working. I've checked my phone settings. What's wrong?",
+"answer": "push notifications on phone not working despite correct phone settings."
+},
+{
+"question": "I'm trying to use the voice-to-text feature, but it's not recognizing my speech. What languages are supported?",
+"answer": "voice-to-text not working, user needs to know supported languages."
+},
+{
+"question": "Is there a public API for this service? I want to build a custom integration.",
+"answer": "user wants to know if there is a public API for custom integrations."
+},
+{
+"question": "I've subscribed to the newsletter, but I haven't received any emails. Can you check if I'm on the list?",
+"answer": "user subscribed to newsletter but not receiving emails, needs subscription confirmation."
+}
+]
