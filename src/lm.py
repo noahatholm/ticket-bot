@@ -7,6 +7,7 @@ import os
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel,get_peft_model
+import re
 
 
 class Model():
@@ -80,17 +81,21 @@ class Model():
             pad_token_id=pad_token_id,
             eos_token_id=pad_token_id)
 
-    def decode(self,tokens):
-        return self.tokenizer.batch_decode(tokens)
+    def decode(self,tokens,length):
+        return self.tokenizer.decode(tokens[0,length:])
 
     #Basic lm text generation
     def query(self,prompt,*,tokens = 200, finetuned = None):
         tokenized_prompt = self.tokenize_prompt(prompt)
         generated_tokens = self.generate(tokenized_prompt,newTokens = tokens)
-        decoded_tokens = self.decode(generated_tokens)
-        return decoded_tokens[-len(prompt):]
+        decoded_tokens = self.decode(generated_tokens,len(tokenized_prompt))
+        print(decoded_tokens)
+        return decoded_tokens
 
 
+    def extract_answer(self,text):
+        matches = re.findall(r'<Answer>(.*?)</Answer>', text, flags=re.DOTALL)
+        return[matches[1]]
 
 def test():
     myModel = Model()
@@ -103,13 +108,19 @@ def test():
 
     print(myModel.query(prompt, tokens = 100))
 
-    finetune(myModel.get_model(),myModel.get_tokenizer(),"db_query","db_query",epochs = 5, device="cuda")
+    #finetune(myModel.get_model(),myModel.get_tokenizer(),"db_query","db_query",epochs = 5, device="cuda")
 
 
 
     myModel.set_adaptor("db_query")
+    print("####################")
 
-    print(myModel.query(prompt, tokens = 100))
+
+    print(response := myModel.query(prompt, tokens = 30))
+
+    print("#####################")
+
+    print(myModel.extract_answer(response))
 
     #print(myModel.query("what is the capital of england?", tokens = 20))
 
