@@ -17,7 +17,7 @@ class Model():
         self.device = device
         self.dtype = dtype
 
-        self.LoRA_models = [] #A list of strings that contains the name of any pretrained lora models
+
 
 
         #Define our llm
@@ -48,6 +48,9 @@ class Model():
 
     def set_adaptor(self,name):
         try:
+            self.model = AutoModelForCausalLM.from_pretrained(self.model_name,
+                device_map=self.device,
+                dtype=self.dtype)
             self.model = PeftModel.from_pretrained(self.model, "../models/" + name)
         except Exception as e:
             print(e)
