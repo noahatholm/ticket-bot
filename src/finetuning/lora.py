@@ -28,15 +28,17 @@ class myDataset(torch.utils.data.Dataset):
 
 #Takes a AutoModelForCausalLM object as well as the name of the finetuned model, the name also needs to have a name.json file in 
 # finetuning that contains question answer examples for training
-def finetune(model: AutoModelForCausalLM,tokenizer: AutoTokenizer,name: str, prompt: str ,*, epochs = 10, device = "cuda"):
+def finetune(model: AutoModelForCausalLM,tokenizer: AutoTokenizer,name: str, prompt: str ,*, epochs = 10, device = "cuda",path_to_prompt = "..//..//prompts/", path_to_finetune = "..//..//finetuning/", path_to_adaptors = "..//..//models/"):
     try:
-        training_data = fetch_json_data(name)
+        training_data = fetch_json_data(name,path_to_finetune)
     except:
+        print("Could not fetch json training data")
         return False
     
     try:
-        prompt = fetch_prompt(prompt)
+        prompt = fetch_prompt(prompt,path_to_prompt)
     except:
+        print("Could not fetch prompt")
         return False
 
     #print_json(training_data)
@@ -85,8 +87,8 @@ def finetune(model: AutoModelForCausalLM,tokenizer: AutoTokenizer,name: str, pro
         print(f"Epoch: {epoch}, Average loss: {average_loss}")
 
     #Save new weights to disk
-    os.makedirs("..//models/",exist_ok=True)
-    model.save_pretrained("..//Models//"+name)
+    os.makedirs(path_to_adaptors,exist_ok=True)
+    model.save_pretrained(path_to_adaptors+name)
     return True
 
 
@@ -105,8 +107,8 @@ def combine_pairs(training_data,prompt):
 
 
 
-def fetch_prompt(prompt_name):
-    path_to_folder = "..//prompts/"
+def fetch_prompt(prompt_name, path_to_folder):
+    
     try:
         with open(path_to_folder + prompt_name + ".txt") as f:
             prompt = f.read()
@@ -117,8 +119,8 @@ def fetch_prompt(prompt_name):
     except Exception as e:
         raise
 
-def fetch_json_data(name):
-    path_to_folder = "..//finetuning/"
+def fetch_json_data(name, path_to_folder):
+    #path_to_folder = "..//finetuning/"
     try:
         with open(path_to_folder + name + ".json") as f:
             data = json.load(f)

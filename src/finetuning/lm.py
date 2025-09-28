@@ -1,5 +1,5 @@
 #This document provides a wrapper class that will finetune and query the language model
-from lora import finetune,fetch_prompt
+from .lora import finetune,fetch_prompt
 
 from dotenv import load_dotenv
 import os
@@ -11,13 +11,22 @@ import re
 
 
 class Model():
-    def __init__(self,*,model_name = "meta-llama/Llama-3.2-1B-Instruct", #A larger model is optimal however im developing on an old gpu
-                  device = "cuda",
-                    dtype = torch.float16): #Using float16 because uni gpu isn't designed for bfloats
+    def __init__(self, *,
+        model_name = "meta-llama/Llama-3.2-1B-Instruct",  
+        device = "cuda",
+        dtype = torch.float16,#Using float16 because uni gpu isn't designed for bfloats
+        path_to_adaptors = "..//..//models/",
+        path_to_finetune = "..//..//finetuning/",
+        path_to_prompts = "..//..//prompts/"
+    ):  
         self.model_name = model_name
         self.device = device
         self.dtype = dtype
 
+        #Paths
+        self.path_to_adaptors = path_to_adaptors
+        self.path_to_prompts = path_to_prompts
+        self.path_to_finetune = path_to_finetune
 
 
 
@@ -49,10 +58,14 @@ class Model():
 
     def set_adaptor(self,name):
         try:
-            self.model = AutoModelForCausalLM.from_pretrained(self.model_name,
+            if not os.path.exists(self.path_to_adaptors + name + "//adapter_config.json"): #Check if lora already exists
+                if not finetune(self.model,self.tokenizer,"db_query","db_query",epochs = 10, device="cuda",path_to_prompt=self.path_to_prompts, path_to_finetune=self.path_to_finetune, path_to_adaptors = self.path_to_adaptors): #If not create one
+                    print("Finetune Returned False")
+
+            self.model = AutoModelForCausalLM.from_pretrained(self.model_name, #Load adaptor
                 device_map=self.device,
                 dtype=self.dtype)
-            self.model = PeftModel.from_pretrained(self.model, "../models/" + name)
+            self.model = PeftModel.from_pretrained(self.model, self.path_to_adaptors + name)
         except Exception as e:
             print(e)
             raise
@@ -91,6 +104,15 @@ class Model():
         decoded_tokens = self.decode(generated_tokens,len(tokenized_prompt))
         print(decoded_tokens)
         return decoded_tokens
+    
+
+        #Conversation lm text generation
+    def query_chat_prompt(self,prompt,*,tokens = 300, finetuned = None):
+        tokenized_prompt = self.tokenize_chat_prompt(prompt)
+        generated_tokens = self.generate(tokenized_prompt,newTokens = tokens)
+        decoded_tokens = self.decode(generated_tokens,len(tokenized_prompt))
+        print(decoded_tokens)
+        return decoded_tokens
 
 
     def extract_answer(self,text):
@@ -100,7 +122,7 @@ class Model():
 def test():
     myModel = Model()
 
-    prompt = fetch_prompt("db_query")
+    prompt = fetch_prompt("db_query","..//..//prompts/")
     query = "Help my router isn't working its showing a flashing red light?"
     prompt = prompt.format(query)
     print(prompt)

@@ -1,2 +1,3 @@
 rag/images/
 src/rag/__pycache__/
+src/finetuning/__pycache__/

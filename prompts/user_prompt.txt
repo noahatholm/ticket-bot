@@ -1,0 +1,11 @@
+Here is the relevant context from the documentation:
+
+---
+Context:
+{}
+---
+
+
+Based on the context provided above, please answer the following question.
+
+Question: {}
