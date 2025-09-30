@@ -34,6 +34,8 @@ class Support:
         except:
             raise
 
+    
+
     def user_query_to_rag_query(self,query):
         tokens = 30
         self.llmModel.set_adaptor("db_query")
@@ -43,11 +45,13 @@ class Support:
 
         #Query Model
         response = self.llmModel.query(prompt,tokens=tokens)
+        #print(f"#########################\n {response}  \n#######################")
         return self.llmModel.extract_answer(response)
 
-    def query_llm_for_support(self,conversation,*,rag_data = ""):
+    def query_llm_for_support(self,conversation,*,rag_data = "",tokens = 400):
+        self.llmModel.reset_adaptor()
         prompt = self.add_system_prompt(conversation,rag_data)
-        response = self.llmModel.query_chat_prompt(prompt,tokens=300)
+        response = self.llmModel.query_chat_prompt(prompt,tokens=tokens)
         return response
 
 
@@ -85,7 +89,7 @@ class Support:
 
 
 def test():
-    ticket_support = Support()
+    ticket_support = Support(llm_model="meta-llama/Llama-3.2-3B-Instruct")
     conversation = [
         {"role": "user",
          "content": "Help my router isn't working its showing a flashing red light?"}

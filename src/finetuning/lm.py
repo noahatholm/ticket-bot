@@ -66,6 +66,15 @@ class Model():
                 device_map=self.device,
                 dtype=self.dtype)
             self.model = PeftModel.from_pretrained(self.model, self.path_to_adaptors + name)
+            print("Adaptor Set to " + name)
+        except Exception as e:
+            print(e)
+            raise
+
+    def reset_adaptor(self):
+        try:
+            self.model = self.model.get_base_model()
+            print("Model Reset to Base")
         except Exception as e:
             print(e)
             raise
@@ -90,28 +99,42 @@ class Model():
             top_p=top_p,
             top_k=top_k,
             repetition_penalty=repetition_penalty,
-            do_sample=True, 
+            do_sample=do_sample, 
             pad_token_id=pad_token_id,
             eos_token_id=pad_token_id)
 
+    def generate_conversation(self,tokenized_prompt,*, newTokens = 200, temperature = 0.15, top_p = 0.9, top_k = 40, repetition_penalty=1.1,do_sample=True):
+        pad_token_id = self.tokenizer.eos_token_id
+        return self.model.generate(tokenized_prompt,
+                                    max_new_tokens = newTokens,
+                                    do_sample = do_sample,
+                                    top_p=top_p,
+                                    top_k=top_k,
+                                    repetition_penalty=repetition_penalty, 
+                                    pad_token_id=pad_token_id,
+                                    eos_token_id=pad_token_id)
+
     def decode(self,tokens,length):
         return self.tokenizer.decode(tokens[0,length:])
+    
+    def batch_decode(self,tokens,length):
+        return self.tokenizer.batch_decode(tokens)[0]
 
     #Basic lm text generation
     def query(self,prompt,*,tokens = 200, finetuned = None):
         tokenized_prompt = self.tokenize_prompt(prompt)
         generated_tokens = self.generate(tokenized_prompt,newTokens = tokens)
         decoded_tokens = self.decode(generated_tokens,len(tokenized_prompt))
-        print(decoded_tokens)
+        #print(decoded_tokens)
         return decoded_tokens
     
 
         #Conversation lm text generation
     def query_chat_prompt(self,prompt,*,tokens = 300, finetuned = None):
         tokenized_prompt = self.tokenize_chat_prompt(prompt)
-        generated_tokens = self.generate(tokenized_prompt,newTokens = tokens)
-        decoded_tokens = self.decode(generated_tokens,len(tokenized_prompt))
-        print(decoded_tokens)
+        generated_tokens = self.generate_conversation(tokenized_prompt,newTokens = tokens)
+        decoded_tokens = self.batch_decode(generated_tokens,len(tokenized_prompt))
+        #print(decoded_tokens)
         return decoded_tokens
 
 
