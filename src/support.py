@@ -75,7 +75,7 @@ class Support:
         #print(rag_query)
         rag_data = self.rag.query(rag_query)
         response = self.query_llm_for_support(conversation,rag_data=rag_data)
-        return response
+        return (response,rag_data["images"])
 
 
     def conversation_to_text(self,conversation):
