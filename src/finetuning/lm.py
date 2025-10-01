@@ -118,7 +118,12 @@ class Model():
         return self.tokenizer.decode(tokens[0,length:])
     
     def batch_decode(self,tokens,length):
-        return self.tokenizer.batch_decode(tokens)[0]
+        tokens = tokens[0]
+        decoded = self.tokenizer.decode(tokens)
+        match = re.search(r"<\|start_header_id\|>assistant<\|end_header_id\|>(.*)", decoded, re.DOTALL)
+        if match:
+            return match.group(1)
+
 
     #Basic lm text generation
     def query(self,prompt,*,tokens = 200, finetuned = None):
@@ -132,8 +137,9 @@ class Model():
         #Conversation lm text generation
     def query_chat_prompt(self,prompt,*,tokens = 300, finetuned = None):
         tokenized_prompt = self.tokenize_chat_prompt(prompt)
+        #print(tokenized_prompt)
         generated_tokens = self.generate_conversation(tokenized_prompt,newTokens = tokens)
-        decoded_tokens = self.batch_decode(generated_tokens,len(tokenized_prompt))
+        decoded_tokens = self.batch_decode(generated_tokens,len(tokenized_prompt[0]))
         #print(decoded_tokens)
         return decoded_tokens
 
@@ -172,3 +178,11 @@ def test():
 
 if __name__ == "__main__":
     test()
+
+
+
+
+
+
+
+

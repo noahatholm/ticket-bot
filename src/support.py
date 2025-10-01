@@ -34,6 +34,8 @@ class Support:
         except:
             raise
 
+    def get_model_name(self):
+        return self.llmModel.get_model()
     
 
     def user_query_to_rag_query(self,query):

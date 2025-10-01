@@ -10,9 +10,11 @@ for example
 
 ### LM's Answer without RAG
 `Your router's flashing red light typically indicates a power issue. This can occur due to a dead battery, loose or damaged cables, or a faulty power adapter. To resolve this, ensure that your router is properly plugged into a working outlet and try replacing the batteries if they're old. Check the power cord and cable for any damage or wear. If none of these steps resolve the issue, consider resetting your router to its default settings to see if it resolves the problem.`
+
 This whilst it appears helpful is a hallucination. the real answer lies within the documentation
 
 `I would suggest resetting the router to its factory settings and then reconfiguring the network settings. If the problem persists, consider searching the community forums for known issues or troubleshooting guides specific to your model.` 
+
 Even with higher parameter models the issue isn't known
 
 ### LM's Answer with Rag
