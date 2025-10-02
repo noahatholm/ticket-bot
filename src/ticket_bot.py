@@ -6,16 +6,19 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 
+
 import os
 import sys
 from dotenv import load_dotenv
+import asyncio
 
 class Ticket_Button(discord.ui.View):
-    def __init__(self,label,support_Bot,*,category=None):
+    def __init__(self,label,support_Bot,*,category=None,support_role=None):
         super().__init__(timeout=None)  # timeout=None keeps the button active forever
         self.label = label
         self.support_Bot = support_Bot
         self.category = category
+        self.support_role = support_role
 
         button = discord.ui.Button(
             label=self.label,
@@ -27,7 +30,7 @@ class Ticket_Button(discord.ui.View):
 
 
     async def create_ticket(self,interaction:discord.Interaction):
-        await create_ticket(interaction,self.support_Bot,category=self.category)  # link to callback
+        await create_ticket(interaction,self.support_Bot,category=self.category,support_role = self.support_role)  # link to callback
         
 
 
@@ -49,6 +52,7 @@ class TicketBot(commands.Bot):
         self.log_channel = json_data["log_channel"]
         self.prefix = json_data["prefix"]
         self.ticket_category = json_data["ticket_category"]
+        self.support_role = json_data["support_role"]
 
         
         super().__init__(command_prefix=self.prefix, intents=intents)
@@ -101,8 +105,19 @@ class TicketBot(commands.Bot):
             )
             await interaction.response.send_message(embed=embed, view=view)
 
+        @self.tree.command(name="close", description="Closes a Ticket")
+        async def close(interaction: discord.Interaction):
+            if not interaction.channel.name.startswith("ticket"):
+                await interaction.response.send_message("This channel isn't a ticket")
+                return
+            
+            await interaction.response.send_message("Successfully Closed Ticket closing ticket in 3 seconds")
+            await asyncio.sleep(3)
+            await interaction.channel.delete()
+            return
 
-        self.add_view(Ticket_Button(self.ticket_message_button, self.support_bot, category=self.ticket_category))
+
+        self.add_view(Ticket_Button(self.ticket_message_button, self.support_bot, category=self.ticket_category,support_role=self.support_role))
         
         # Save button data to disk
         save_button(self.path_to_button, self.build_button_data())

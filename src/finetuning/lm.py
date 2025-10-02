@@ -87,6 +87,7 @@ class Model():
     #Pads and tokenizes a prompt using openais system, user template
     def tokenize_chat_prompt(self,prompt):
         return self.tokenizer.apply_chat_template(prompt,padding=True,return_tensors="pt",add_generation_prompt=True).to(self.device)
+        #This only returns a tensor hences why theres the attention mask problem
 
     #Generate wrapper with my preset values that i found work better
     def generate(self,tokenized_prompt,*, newTokens = 200, temperature = 0.15, top_p = 0.9, top_k = 40, repetition_penalty=1.1,do_sample=True):
@@ -146,7 +147,7 @@ class Model():
 
     def extract_answer(self,text):
         matches = re.findall(r'<Answer>(.*?)</Answer>', text, flags=re.DOTALL)
-        return[matches[1]]
+        return [matches[1].removesuffix("<|eot_id|>")]
 
 def test():
     myModel = Model()

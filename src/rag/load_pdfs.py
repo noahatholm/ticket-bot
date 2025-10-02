@@ -65,7 +65,7 @@ def parse_pdfs(path,image_folder):
                                 header += text
                             if not at_header:
                                 if last_images == []:
-                                    last_images.append(images)
+                                    last_images = images
                                 # data_frame = {
                                 #     "Text": text_buffer,
                                 #     "metadata": {
@@ -76,7 +76,7 @@ def parse_pdfs(path,image_folder):
                                 #     }
                                 #}
                                 #data_frames.append(data_frame)
-                                new_chunk = Chunk(header,text_buffer,last_images,page_start,page_num)
+                                new_chunk = Chunk(header,text_buffer,images,page_start,page_num)
                                 data_frames.append(new_chunk)
                                 
                                 header = text

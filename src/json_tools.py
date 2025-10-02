@@ -7,7 +7,8 @@ def load_json(path_to_json):
         "model":"meta-llama/Llama-3.2-3B-Instruct",
         "log_channel": "1422698365577068586",
         "prefix": "!",
-        "ticket_category": None
+        "ticket_category": None,
+        "support_role": None
     }
     try:
         with open(path_to_json, "r") as f:

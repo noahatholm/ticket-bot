@@ -17,9 +17,9 @@ class Chunk:
 
     def to_json(self):
         return {
-            "images": self.images,
             "header": self.header,
             "text": self.text,
+            "images": self.images,
             
             "page_start": self.page_start,
             "page_end": self.page_end,

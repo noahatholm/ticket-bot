@@ -40,6 +40,9 @@ class Rag:
             "images": chunk.get_images()
         }
         return data
+    
+    def get_chunks(self):
+        return self.Chunks
 
 
 
