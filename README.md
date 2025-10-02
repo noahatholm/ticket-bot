@@ -10,6 +10,7 @@ A locally-run Discord bot that uses small language models (LLMs), RAG (Retrieval
 
 ## Examples
 The Bot provides support in the form of text and images taken from the documentation
+(The Documentation in these exampels were a series of PDF's taken from TP-Links website about their routers)
 
 ![image support](examples/ticket_bot.gif)
 
