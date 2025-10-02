@@ -1,5 +1,27 @@
 # ticket-bot
-A discord ticket bot that also provides helpful assistance due to finetuning to be a support bot + rag/embeding to access specific support documents
+A locally-run Discord bot that uses small language models (LLMs), RAG (Retrieval-Augmented Generation), and LoRA finetuning to deliver fast, cost free, and efficient support
+
+## Features
+- RAG Enhanced Responses - All answers are backed by your own documentation this greatly reduces hallucinations
+- LoRA - Finetuning Custom Model train for prompt rewriting and better retrieval
+- PDF - Parsing Automatically parses and splits documents into precise chunks and stores them as vector embeddings
+- Discord Integration - Seamlessly Integrates into your discord Server
+- Offline(Except Discord API) & Local - No API costs and latency
+
+## Examples
+The Bot provides support in the form of text and images taken from the documentation
+
+![image support](examples/ticket_bot.gif)
+
+Conversation support
+
+![follow up](examples/follow_up.png)
+
+Guided Walk Through
+
+![walk through](examples/plug_in.png)
+
+
 
 ## Rag
 the bot is designed to parse PDF's and split them up based on their headers into vector embeddable chunks that are then stored in a vector database waiting to be queried by the Finetuned LLM the quality of response including Rag data are much higher and it also allows for the LLM to provide things like images which have been extracted from the PDF's
@@ -24,7 +46,7 @@ This answer is far more helpful than the previous too as it is what is stated in
 
 
 ## Finetuning
-Finetuning is used to take the small (1B) i kinda useless model that was awful at following instruction to convert user questions into good vector database prompts
+Finetuning is used to make a small (~1B) model significantly more effective at rewriting user queries into clean, concise vector database prompts.
 E.g
 
 ### Prompt
@@ -38,3 +60,37 @@ Response doesn't follow requested format and is just key words extracted not ide
 `<Answer>router not turning on, displaying flashing red light.</Answer>`
 
 Now follows the quested format and is cohesive
+
+
+
+## Setup
+1. Clone the Repository
+
+    ```
+    git clone https://github.com/noahatholm/ticket-bot.git
+    cd ticket-bot```
+
+2. Install depedencies
+
+    `pip install -r requirements.txt`
+
+3. Create a .env file that looks like this.
+
+
+    ```
+    HUGGINGAPI=HUGGINGFACEAPIKEY
+    TOKEN=DISCORDBOTTOKEN ```
+
+4. configure inputs.json
+
+5. Run the bot
+
+    `python src/main.py`
+
+6. If you'd like to configure your support button edit button.json
+
+
+## TODO
+1. Improve Discord Bot, Currently the bot only has two commands
+2. Move to a proper data base to store vector embeddings not just memory
+3. Expand to different filetypes

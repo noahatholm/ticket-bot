@@ -1,2 +1,0 @@
-pymupdf
-sentence-transformers faiss-cpu
